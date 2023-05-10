@@ -10,8 +10,8 @@ Future<AudioHandler> initAudioService() async {
       androidNotificationOngoing: true,
       androidStopForegroundOnPause: true,
       // P Add Test
-      // fastForwardInterval: Duration(seconds: 10),
-      // rewindInterval: Duration(seconds: 10),
+      fastForwardInterval: Duration(seconds: 10),
+      rewindInterval: Duration(seconds: 10),
     ),
   );
 }
@@ -176,6 +176,24 @@ class MyAudioHandler extends BaseAudioHandler {
 
   @override
   Future<void> skipToPrevious() => _player.seekToPrevious();
+
+// // New Add P
+//   @override
+//   Future<void> fastForward() {
+//     int newPos = _player.position.inMilliseconds +
+//         AudioService.config.fastForwardInterval.inMilliseconds;
+//     _player.seek(Duration(milliseconds: newPos));
+//     return Future.value();
+//   }
+
+// // New Add P
+//   @override
+//   Future<void> rewind() {
+//     int newPos = _player.position.inMilliseconds -
+//         AudioService.config.rewindInterval.inMilliseconds;
+//     _player.seek(Duration(milliseconds: newPos));
+//     return Future.value();
+//   }
 
   @override
   Future<void> setRepeatMode(AudioServiceRepeatMode repeatMode) async {

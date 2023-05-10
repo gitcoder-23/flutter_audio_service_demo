@@ -133,8 +133,32 @@ class AudioProgressBar extends StatelessWidget {
   }
 }
 
-class AudioControlButtons extends StatelessWidget {
+class AudioControlButtons extends StatefulWidget {
   const AudioControlButtons({Key? key}) : super(key: key);
+
+  @override
+  State<AudioControlButtons> createState() => _AudioControlButtonsState();
+}
+
+class _AudioControlButtonsState extends State<AudioControlButtons> {
+  // AudioHandler? _audioHandler;
+
+  // Widget renderRewind() {
+  //   return AppCircularButton(
+  //     icon: Icons.replay_10,
+  //     color: Color(0xFF57407F),
+  //     handler: () => _audioHandler!.rewind(),
+  //   );
+  // }
+
+  // Widget renderForward() {
+  //   return AppCircularButton(
+  //     icon: Icons.forward_10_rounded,
+  //     color: Color(0xFF57407F),
+  //     handler: () => _audioHandler!.fastForward(),
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -143,9 +167,11 @@ class AudioControlButtons extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           RepeatButton(),
+          // renderRewind(),
           PreviousSongButton(),
           PlayButton(),
           NextSongButton(),
+          // renderForward(),
           ShuffleButton(),
         ],
       ),
