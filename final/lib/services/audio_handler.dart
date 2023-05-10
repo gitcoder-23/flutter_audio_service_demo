@@ -9,6 +9,9 @@ Future<AudioHandler> initAudioService() async {
       androidNotificationChannelName: 'Audio Service Demo',
       androidNotificationOngoing: true,
       androidStopForegroundOnPause: true,
+      // P Add Test
+      // fastForwardInterval: Duration(seconds: 10),
+      // rewindInterval: Duration(seconds: 10),
     ),
   );
 }
@@ -38,13 +41,17 @@ class MyAudioHandler extends BaseAudioHandler {
       final playing = _player.playing;
       playbackState.add(playbackState.value.copyWith(
         controls: [
+          // MediaControl.rewind,
           MediaControl.skipToPrevious,
           if (playing) MediaControl.pause else MediaControl.play,
           MediaControl.stop,
           MediaControl.skipToNext,
+          // MediaControl.fastForward,
         ],
         systemActions: const {
           MediaAction.seek,
+          // MediaAction.seekForward,
+          // MediaAction.seekBackward,
         },
         androidCompactActionIndices: const [0, 1, 3],
         processingState: const {
